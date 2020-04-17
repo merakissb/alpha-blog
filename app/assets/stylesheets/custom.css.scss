@@ -6,6 +6,7 @@
 
 .nav-link {
   color: white !important;
+  font-weight: bold;
 }
 
 #search-input{
@@ -47,7 +48,7 @@ body {
 
 #page-content {
   flex: 1 0 auto;
-  background-color: lightgrey;
+  background-color: rgb(109, 109, 109);
 }
 
 #sticky-footer {
@@ -85,3 +86,19 @@ body {
     margin-right: 1em; }
   .flickr_pagination .next_page {
     margin-left: 1em; }
+
+#card-profile{
+  background-color: black;
+}
+
+#card-article{
+  background-color: black;
+}
+
+#card-header-article{
+  text-decoration: none;
+}
+
+#posted-by{
+  text-decoration: none;
+}

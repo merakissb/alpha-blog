@@ -1,25 +1,24 @@
-<h2 class="text-center mt-4"><%= @article.title %></h1>
-
 <div class="container">
-  <div class="row justify-content-md-center">
-    <div class="col-8 mt-4">
-      <div class="card text-center shadow mb-5 bg-white rounded">
-        <div class="card-header font-italic">
-          Posted by "<%= @article.user.username if @article.user %>"
-          <%= link_to gravatar_for(@article.user), user_path(@article.user) %>
+  <div class="row justify-content-center">
+    <div class="col-10 mt-4">
+      <div class="card text-center shadow mb-5" id="card-article">
+        <%= link_to gravatar_for(@article.user), user_path(@article.user), class: "mt-4" %>
+        <div class="card-header font-italic text-info h4">
+          <%= @article.title %>
         </div>
         <div class="card-body">
-          <div class="card-text text-left"><%= simple_format(@article.description) %></div>
+          <div class="card-text text-left text-muted"><%= simple_format(@article.description) %></div>
           <% if logged_in? && current_user == @article.user %>
             <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-info" %>
             <%= link_to 'Delete', article_path(@article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
           <% end %>
-          <%= link_to 'View all articles', articles_path, class: "btn btn-outline-info" %>
         </div>
         <div class="card-footer text-muted">
           <small>Created <%= time_ago_in_words(@article.created_at) %> ago,
-                 Updated <%= time_ago_in_words(@article.updated_at) %> ago
-          </small>
+            Updated <%= time_ago_in_words(@article.updated_at) %> ago
+          </small></br>
+            <div>Posted by <%= @article.user.username if @article.user %></div>
+          <%= link_to 'View all articles', articles_path, class: "btn btn-outline-info mt-4" %>
         </div>
       </div>
     </div>
