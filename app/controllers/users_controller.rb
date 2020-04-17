@@ -3,11 +3,11 @@ class UsersController < ApplicationController
   before_action :require_same_user, only: [:edit, :update]
   
   def show
-    @articles = @user.articles.paginate(page: params[:page], per_page: 3)
+    @articles = @user.articles.order(created_at: :desc).paginate(page: params[:page], per_page: 3)
   end
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 3)
+    @users = User.order(created_at: :desc).paginate(page: params[:page], per_page: 3)
   end
 
   def new
