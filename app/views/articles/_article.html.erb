@@ -10,7 +10,7 @@
           </div>
           <div class="card-body" id="card-body-article">
             <p class="card-text text-muted"><%= truncate(article.description, length: 100) %></p>
-            <% if logged_in? && current_user == article.user %>
+            <% if logged_in? && (current_user == article.user || current_user.admin?)  %>
               <%= link_to 'View', article_path(article), class: "btn btn-outline-success btn-xs" %>
               <%= link_to 'Edit', edit_article_path(article), class: "btn btn-outline-info btn-xs" %>
               <%= link_to 'Delete', article_path(article), class: "btn btn-outline-danger btn-xs", method: :delete, data: {confirm: "Are you sure?"} %>
