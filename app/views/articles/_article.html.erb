@@ -14,11 +14,14 @@
               <%= link_to 'View', article_path(article), class: "btn btn-outline-success btn-xs" %>
               <%= link_to 'Edit', edit_article_path(article), class: "btn btn-outline-info btn-xs" %>
               <%= link_to 'Delete', article_path(article), class: "btn btn-outline-danger btn-xs", method: :delete, data: {confirm: "Are you sure?"} %>
-              <% else %>
+            <% else %>
               <%= link_to 'View', article_path(article), class: "btn btn-outline-success btn-xs" %>
             <% end %>
           </div>
           <div class="card-footer text-muted">
+          <% if article.categories.any? %>
+              <div clas="mt-2"><%= render article.categories %></div>
+            <% end %>
             <small>Created <%= time_ago_in_words(article.created_at) %> ago, Updated <%= time_ago_in_words(article.updated_at) %> ago
               <% if article.user %>
                 Posted by <%= link_to article.user.username, user_path(article.user), id: "posted-by" %>

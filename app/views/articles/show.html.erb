@@ -5,6 +5,7 @@
         <%= link_to gravatar_for(@article.user), user_path(@article.user), class: "mt-4" %>
         <div class="card-header font-italic text-info h4">
           <%= @article.title %>
+          
         </div>
         <div class="card-body">
           <div class="card-text text-left text-muted"><%= simple_format(@article.description) %></div>
@@ -13,6 +14,9 @@
             <%= link_to 'Delete', article_path(@article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
           <% end %>
         </div>
+        <% if @article.categories.any? %>
+          <div clas="mt-2"><%= render @article.categories %></div>
+        <% end %>
         <div class="card-footer text-muted">
           <small>Created <%= time_ago_in_words(@article.created_at) %> ago,
             Updated <%= time_ago_in_words(@article.updated_at) %> ago
