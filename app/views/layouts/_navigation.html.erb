@@ -9,11 +9,25 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Articles</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <% if logged_in? %>
+          <% if logged_in? && current_user.admin? %>
             <%= link_to "Create new article", new_article_path, class: "dropdown-item" %>
             <%= link_to "View articles", articles_path, class: "dropdown-item" %>
           <% else %>
             <%= link_to "View articles", articles_path, class: "dropdown-item" %>
+          <% end %>
+          <div class="dropdown-divider"></div>
+            <a class="dropdown-item disabled">Disabled</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Categories</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% if logged_in? && current_user.admin? %>
+            <%= link_to "Create new Category", new_category_path, class: "dropdown-item" %>
+            <%= link_to "View Categories", categories_path, class: "dropdown-item" %>
+          <% else %>
+            <%= link_to "View Categories", categories_path, class: "dropdown-item" %>
           <% end %>
           <div class="dropdown-divider"></div>
             <a class="dropdown-item disabled">Disabled</a>
