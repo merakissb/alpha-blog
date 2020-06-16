@@ -9,14 +9,12 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Articles</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <% if logged_in? || current_user.admin? %>
+          <% if logged_in? %>
             <%= link_to "Create new article", new_article_path, class: "dropdown-item" %>
             <%= link_to "View articles", articles_path, class: "dropdown-item" %>
           <% else %>
             <%= link_to "View articles", articles_path, class: "dropdown-item" %>
           <% end %>
-          <div class="dropdown-divider"></div>
-            <a class="dropdown-item disabled">Disabled</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -29,8 +27,6 @@
           <% else %>
             <%= link_to "View Categories", categories_path, class: "dropdown-item" %>
           <% end %>
-          <div class="dropdown-divider"></div>
-            <a class="dropdown-item disabled">Disabled</a>
         </div>
       </li>
       <li class="nav-item">
