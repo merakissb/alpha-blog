@@ -32,12 +32,10 @@
       <li class="nav-item">
         <%= link_to 'Rebloggers', users_path, class: "nav-link" %>
       </li>
-     <form class="form-inline">
-        <input class="form-control" id="search-input" type="text" placeholder="Search" aria-label="Search">
-      </form> 
-    </ul> |
-    
-
+     <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" id="search-input" type="text" placeholder="Search" aria-label="Search">
+      </form>
+    </ul>
     <div class="navbar-nav">
       <% if logged_in? %>
         <li class="nav-item dropdown">
@@ -50,7 +48,7 @@
             <%= link_to 'Logout', logout_path, method: :delete, class: "dropdown-item" %>
             <% else %>
           </div>
-          <%= link_to 'Log in', login_path, class: "btn btn-outline-light" %> |
+          <%= link_to 'Log in', login_path, class: "btn btn-outline-light mr-2" %>
           <%= link_to 'Sign up', signup_path, class: "btn btn-outline-light" %>
         </li>
       <% end %>
