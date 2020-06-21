@@ -14,12 +14,18 @@
             <div class="col-10">
                 <%= f.text_area :description, rows: 10, class: "form-control shadow rounded", placeholder: "Description of article" %>
             </div>
-        </div> 
+        </div>
+        <div class="form-group row">
+            <%= f.label :imagen, class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+                <%= f.file_field :avatar %>
+            </div>
+        </div>
         <div class="form-group row">
           <%= f.label :category, class: "col-2 col-form-label text-light" %>
           <div class="col-10">
             <%= f.collection_select(:category_ids, Category.all, :id, :name, 
-            { prompt: "Please Select a category" }, { multiple: true, size: 10, class: "custom-select shadow rounded" } ) %>
+            { prompt: true }, { multiple: true, size: 10, class: "custom-select shadow rounded" } ) %>
           </div>
         </div> 
         <div class="form-group row justify-content-center">

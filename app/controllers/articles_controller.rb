@@ -5,6 +5,8 @@ class ArticlesController < ApplicationController
     # el @ convierte la variable en una variable de instancia.
 
     def show
+      @comment = Comment.new
+      @comment.article_id = @article.id
     end
 
     def index
@@ -51,7 +53,7 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-        params.require(:article).permit(:title, :description, category_ids: [])
+        params.require(:article).permit(:title, :description, :avatar, category_ids: [])
     end
 
     def require_same_user

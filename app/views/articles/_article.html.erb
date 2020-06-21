@@ -2,20 +2,23 @@
   <% @articles.each do |article|%>
     <div class="row justify-content-center">
       <div class="col-md-10 mt-4">
-        <div class="card text-left shadow mb-5" id="card-article">
+        <div class="card text-center shadow mb-5" id="card-article">
           <div class="card-header font-italic" id="card-header-article">
             <h5>
               <%= link_to article.title, article_path(article), class: "text-info", id: "card-header-article" %> 
             </h5>
           </div>
           <div class="card-body" id="card-body-article">
+            <div class="avatar">
+              <%= image_tag(url_for(article.avatar)) %>
+            </div>
             <p class="card-text text-muted"><%= truncate(article.description, length: 100) %></p>
             <% if logged_in? && (current_user == article.user || current_user.admin?)  %>
-              <%= link_to 'View', article_path(article), class: "btn btn-outline-success btn-xs" %>
+              <%= link_to 'Ver', article_path(article), class: "btn btn-outline-success btn-xs" %>
               <%= link_to 'Edit', edit_article_path(article), class: "btn btn-outline-info btn-xs" %>
               <%= link_to 'Delete', article_path(article), class: "btn btn-outline-danger btn-xs", method: :delete, data: {confirm: "Are you sure?"} %>
             <% else %>
-              <%= link_to 'View', article_path(article), class: "btn btn-outline-success btn-xs" %>
+              <%= link_to 'Ver receta', article_path(article), class: "btn btn-outline-success btn-xs" %>
             <% end %>
           </div>
           <div class="card-footer text-muted">

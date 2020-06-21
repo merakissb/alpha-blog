@@ -1,17 +1,17 @@
-<h1 class ="text-center mt-4 text-white">Category: <%= @category.name %></h1>
+<h1 class ="text-center mt-4 text-white"><%= @category.name %></h1>
+<div class="text-center mt-4 text-white"> las mejores recetas de <%= @category.name %> </div>
 
 <div class="text-center mt-4">
 <% if logged_in? && current_user.admin? %>
   <%= link_to "Edit category name", edit_category_path(@category), class: "btn btn-light" %>
 <% end %>
 </div>
-
-<h3 class="text-center mt-4 text-white">Articles</h3>
 <div class="flickr_pagination mb-4">
   <%= will_paginate @articles, :container => false %>
 </div>
 
 <%= render 'articles/article' %>
+
 <div class="flickr_pagination mb-4">
   <%= will_paginate @articles, :container => false %>
 </div>

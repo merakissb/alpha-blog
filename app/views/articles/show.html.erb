@@ -2,13 +2,15 @@
   <div class="row justify-content-center">
     <div class="col-10 mt-4">
       <div class="card text-center shadow mb-5" id="card-article">
-        <%= link_to gravatar_for(@article.user), user_path(@article.user), class: "mt-4" %>
+        <!-- <%= link_to gravatar_for(@article.user), user_path(@article.user), class: "mt-4" %> -->
         <div class="card-header font-italic text-info h4">
           <%= @article.title %>
-          
         </div>
         <div class="card-body">
-          <div class="card-text text-left text-muted"><%= simple_format(@article.description) %></div>
+          <div class="avatar">
+            <%= image_tag(url_for(@article.avatar)) %>
+          </div>
+          <div class="card-text text-center text-muted"><%= simple_format(@article.description) %></div>
           <% if logged_in? && (current_user == @article.user || current_user.admin?) %>
             <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-info" %>
             <%= link_to 'Delete', article_path(@article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
@@ -28,3 +30,10 @@
     </div>
   </div>
 </div>
+
+
+
+<%= render 'comments/comment' %>
+
+<h2 class="text-center">Add a comment:</h2>
+<%= render 'comments/form' %>

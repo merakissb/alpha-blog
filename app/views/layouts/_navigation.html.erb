@@ -7,13 +7,13 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Articles</a>
+        Artículos</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% if logged_in? %>
-            <%= link_to "Create new article", new_article_path, class: "dropdown-item" %>
-            <%= link_to "View articles", articles_path, class: "dropdown-item" %>
+            <%= link_to "Crear nuevo artículo", new_article_path, class: "dropdown-item" %>
+            <%= link_to "Ver artículos", articles_path, class: "dropdown-item" %>
           <% else %>
-            <%= link_to "View articles", articles_path, class: "dropdown-item" %>
+            <%= link_to "Ver artículos", articles_path, class: "dropdown-item" %>
           <% end %>
         </div>
       </li>
@@ -22,10 +22,10 @@
         Categories</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% if logged_in? && current_user.admin? %>
-            <%= link_to "Create new Category", new_category_path, class: "dropdown-item" %>
-            <%= link_to "View Categories", categories_path, class: "dropdown-item" %>
+            <%= link_to "Crear nueva categoría", new_category_path, class: "dropdown-item" %>
+            <%= link_to "Ver categorías", categories_path, class: "dropdown-item" %>
           <% else %>
-            <%= link_to "View Categories", categories_path, class: "dropdown-item" %>
+            <%= link_to "Ver categorías", categories_path, class: "dropdown-item" %>
           <% end %>
         </div>
       </li>
@@ -42,14 +42,14 @@
           <a class="nav-link dropdown-toggle" href="#" id="username-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= "(Admin)" if current_user.admin? %> <%= current_user.username %></a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "View your profile", user_path(current_user), class: "dropdown-item" %>
-            <%= link_to "Edit your profile", edit_user_path(current_user), class: "dropdown-item" %>
-            <%= link_to "Delete profile", user_path(current_user), method: :delete, data: { confirm: "Are you sure?" }, class: "dropdown-item text-danger" %>
-            <%= link_to 'Logout', logout_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Ver perfil", user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Editar perfil", edit_user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Borrar cuenta", user_path(current_user), method: :delete, data: { confirm: "Esta acción eliminará tu cuenta y todos tus artículos creados en este blog, ¿estás seguro?" }, class: "dropdown-item text-danger" %>
+            <%= link_to 'Cerrar sesión', logout_path, method: :delete, class: "dropdown-item" %>
             <% else %>
           </div>
-          <%= link_to 'Log in', login_path, class: "btn btn-outline-light mr-2" %>
-          <%= link_to 'Sign up', signup_path, class: "btn btn-outline-light" %>
+          <%= link_to 'Iniciar sesión', login_path, class: "btn btn-outline-light mr-2" %>
+          <%= link_to 'Registrarse', signup_path, class: "btn btn-outline-light" %>
         </li>
       <% end %>
     </div>
