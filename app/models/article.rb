@@ -5,7 +5,7 @@ class Article < ApplicationRecord
 
     validates :title, presence: true, length: { minimum: 6, maximum: 100}
     validates :description, presence: true, length: { minimum: 16, maximum: 2000}
-
+    validates :avatar, presence: true
     has_one_attached :avatar
     has_many :comments, dependent: :destroy
 end
