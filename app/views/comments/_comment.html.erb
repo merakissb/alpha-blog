@@ -1,13 +1,22 @@
-<div class="container mt-3">    
+<div class="container">    
   <% @article.comments.each do |comment|%>
-    <div class="media border p-3 mb-4">
-      <div class="media-body">
-        <h4 class="mt-0 mb-1"><%= comment.user.username %> <small>comentó <%= time_ago_in_words(comment.created_at) %></small></h4>
-        <p><%= comment.body %></p>      
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <div class="card mb-4" id="body_comments">
+          <div class="card-header">
+            <b><%= comment.user.username %></b> <small>comento hace <%= time_ago_in_words(comment.created_at) %>
+          </div>
+          <div class="card-body" >
+            <h4 class="mt-0 mb-1"></small></h4>
+            <p><%= comment.body %></p>      
+          </div>
+          <div class="col-3 mb-2">
+            <% if logged_in? && (current_user == comment.user || current_user.admin?) %>
+              <%= link_to 'Eliminar comentario', [comment.article, comment], method: :delete, data: { confirm: 'eliminaras tu comentario, ¿estás seguro?' }, class: "btn btn-secondary" %>
+            <% end %>
+          </div>
+        </div>
       </div>
-      <% if logged_in? && (current_user == comment.user || current_user.admin?) %>
-        <%= link_to 'Destroy Comment', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
     </div>
   <% end %>
 </div>
