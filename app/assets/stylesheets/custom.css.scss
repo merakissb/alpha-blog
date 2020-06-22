@@ -1,7 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap';
 
 .navbar{
-  background-color: black !important;
+  background-color: #a6c19a !important;
 }
 
 .nav-link {
@@ -32,7 +32,7 @@
 }
 
 .jumbotron{
-  background-image: asset-url('csgo.png');
+  background-image: asset-url('Reblog.png');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -44,15 +44,20 @@
 html,
 body {
   height: 100%;
+  font-family: "Segoe UI";
+  background-image: asset-url('textura.jpg');
+  background-size: 10%;
 }
 
 #page-content {
   flex: 1 0 auto;
-  background-color: rgb(109, 109, 109);
 }
 
 #sticky-footer {
   flex-shrink: none;
+  background-color: #a6c19a !important;
+  color: white !important;
+  font-weight: bold;
 }
 
 /* pagination styling */
@@ -92,7 +97,7 @@ body {
 }
 
 #card-article{
-  background-color: black;
+  background-color: #f6f3f0;
 }
 
 #card-header-article{
@@ -101,6 +106,7 @@ body {
 
 #posted-by{
   text-decoration: none;
+  color: #5bc0de
 }
 
 #title-session{
@@ -115,5 +121,15 @@ body {
 }
 
 #body_comments{
-  background-color: rgb(255, 215, 215);
+  background-color: #f8d3c5;
+}
+
+#image_article{
+  max-width: auto;
+  height: 480px;
+  border-radius: 3px;
+}
+
+#bg-comments{
+  background-color: #f8d3c5;
 }

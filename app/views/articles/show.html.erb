@@ -2,13 +2,13 @@
   <div class="row justify-content-center">
     <div class="col-10 mt-4">
       <div class="card text-center shadow mb-5" id="card-article">
+        <%= image_tag(url_for(@article.avatar),class: "card-img-top", id: "image_article") %>
         <!-- <%= link_to gravatar_for(@article.user), user_path(@article.user), class: "mt-4" %> -->
-        <div class="card-header font-italic text-info h4">
-          <%= @article.title %>
-        </div>
         <div class="card-body">
-          <div class="avatar mb-4">
-            <%= image_tag(url_for(@article.avatar)) %>
+          <div class="card-title font-italic" id="card-header-article">
+            <h4 class="text-info">
+              <%= @article.title %>
+            </h4>
           </div>
           <div class="card-text text-center text-muted"><%= simple_format(@article.description) %></div>
           <% if logged_in? && (current_user == @article.user || current_user.admin?) %>
@@ -16,11 +16,11 @@
             <%= link_to 'Delete', article_path(@article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
           <% end %>
         </div>
-        <% if @article.categories.any? %>
-          <div clas="mt-2"><%= render @article.categories %></div>
-        <% end %>
         <div class="card-footer text-muted">
-          <small>Creado <%= time_ago_in_words(@article.created_at) %></small></br>
+          <% if @article.categories.any? %>
+            <div clas="mt-2"><%= render @article.categories %></div>
+          <% end %>
+          <small>Creado hace<%= time_ago_in_words(@article.created_at) %></small>
           <div>Posted by <%= @article.user.username if @article.user %></div>
         </div>
       </div>

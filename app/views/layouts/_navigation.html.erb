@@ -1,57 +1,59 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <%= link_to 'Reblog', root_path, id: "logo", class: "navbar-brand" %>
-  <button class="navbar-toggler" id="navbutton" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Artículos</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <% if logged_in? %>
-            <%= link_to "Crear nuevo artículo", new_article_path, class: "dropdown-item" %>
-            <%= link_to "Ver artículos", articles_path, class: "dropdown-item" %>
-          <% else %>
-            <%= link_to "Ver artículos", articles_path, class: "dropdown-item" %>
-          <% end %>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Categories</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <% if logged_in? && current_user.admin? %>
-            <%= link_to "Crear nueva categoría", new_category_path, class: "dropdown-item" %>
-            <%= link_to "Ver categorías", categories_path, class: "dropdown-item" %>
-          <% else %>
-            <%= link_to "Ver categorías", categories_path, class: "dropdown-item" %>
-          <% end %>
-        </div>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'Rebloggers', users_path, class: "nav-link" %>
-      </li>
-     <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" id="search-input" type="text" placeholder="Search" aria-label="Search">
-      </form>
-    </ul>
-    <div class="navbar-nav">
-      <% if logged_in? %>
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <%= link_to 'Reblog', root_path, id: "logo", class: "navbar-brand" %>
+    <button class="navbar-toggler" id="navbutton" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="username-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= "(Admin)" if current_user.admin? %> <%= current_user.username %></a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Ver perfil", user_path(current_user), class: "dropdown-item" %>
-            <%= link_to "Editar perfil", edit_user_path(current_user), class: "dropdown-item" %>
-            <%= link_to "Borrar cuenta", user_path(current_user), method: :delete, data: { confirm: "Esta acción eliminará tu cuenta y todos tus artículos creados en este blog, ¿estás seguro?" }, class: "dropdown-item text-danger" %>
-            <%= link_to 'Cerrar sesión', logout_path, method: :delete, class: "dropdown-item" %>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Artículos</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <% if logged_in? %>
+              <%= link_to "Crear nuevo artículo", new_article_path, class: "dropdown-item" %>
+              <%= link_to "Ver artículos", articles_path, class: "dropdown-item" %>
             <% else %>
+              <%= link_to "Ver artículos", articles_path, class: "dropdown-item" %>
+            <% end %>
           </div>
-          <%= link_to 'Iniciar sesión', login_path, class: "btn btn-outline-light mr-2" %>
-          <%= link_to 'Registrarse', signup_path, class: "btn btn-outline-light" %>
         </li>
-      <% end %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <% if logged_in? && current_user.admin? %>
+              <%= link_to "Crear nueva categoría", new_category_path, class: "dropdown-item" %>
+              <%= link_to "Ver categorías", categories_path, class: "dropdown-item" %>
+            <% else %>
+              <%= link_to "Ver categorías", categories_path, class: "dropdown-item" %>
+            <% end %>
+          </div>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Rebloggers', users_path, class: "nav-link" %>
+        </li>
+      <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" id="search-input" type="text" placeholder="Search" aria-label="Search">
+        </form>
+      </ul>
+      <div class="navbar-nav">
+        <% if logged_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="username-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= "(Admin)" if current_user.admin? %> <%= current_user.username %></a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <%= link_to "Ver perfil", user_path(current_user), class: "dropdown-item" %>
+              <%= link_to "Editar perfil", edit_user_path(current_user), class: "dropdown-item" %>
+              <%= link_to "Borrar cuenta", user_path(current_user), method: :delete, data: { confirm: "Esta acción eliminará tu cuenta y todos tus artículos creados en este blog, ¿estás seguro?" }, class: "dropdown-item text-danger" %>
+              <%= link_to 'Cerrar sesión', logout_path, method: :delete, class: "dropdown-item" %>
+              <% else %>
+            </div>
+            <%= link_to 'Iniciar sesión', login_path, class: "btn btn-outline-light mr-2" %>
+            <%= link_to 'Registrarse', signup_path, class: "btn btn-outline-light" %>
+          </li>
+        <% end %>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</div>

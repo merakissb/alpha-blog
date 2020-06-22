@@ -1,37 +1,31 @@
 <div class="container">
   <% @articles.each do |article|%>
     <div class="row justify-content-center">
-      <div class="col-md-10 mt-4">
+      <div class="col-10 mt-4">
         <div class="card text-center shadow mb-5" id="card-article">
-          <div class="card-header font-italic" id="card-header-article">
-            <h5>
-              <%= link_to article.title, article_path(article), class: "text-info", id: "card-header-article" %> 
-            </h5>
-          </div>
+          <%= image_tag(article.avatar, class: "card-img-top", id: "image_article") %>
           <div class="card-body" id="card-body-article">
-            
-            <div class="avatar mb-2">
-              <%= image_tag(article.avatar) %>
+            <div class="card-title font-italic" id="card-header-article">
+              <h4 class="text-info">
+                <%= article.title %> 
+              </h4>
             </div>
-
-            <p class="card-text text-muted"><%= truncate(article.description, length: 100) %></p>
+            <p class="card-text text-muted"><%= truncate(article.description, length: 150) %></p>
             <% if logged_in? && (current_user == article.user || current_user.admin?)  %>
               <%= link_to 'Ver', article_path(article), class: "btn btn-outline-success btn-xs" %>
               <%= link_to 'Edit', edit_article_path(article), class: "btn btn-outline-info btn-xs" %>
               <%= link_to 'Delete', article_path(article), class: "btn btn-outline-danger btn-xs", method: :delete, data: {confirm: "Are you sure?"} %>
             <% else %>
-              <%= link_to 'Ver receta', article_path(article), class: "btn btn-outline-success btn-xs" %>
+              <%= link_to 'Ver receta', article_path(article), class: "btn btn-info btn-xs" %>
             <% end %>
           </div>
           <div class="card-footer text-muted">
-          <% if article.categories.any? %>
-              <div clas="mt-2"><%= render article.categories %></div>
+            <% if article.categories.any? %>
+            <div clas="mt-2"><%= render article.categories %></div>
             <% end %>
-            <small>Created <%= time_ago_in_words(article.created_at) %> ago, Updated <%= time_ago_in_words(article.updated_at) %> ago
-              <% if article.user %>
-                Posted by <%= link_to article.user.username, user_path(article.user), id: "posted-by" %>
-              <% end %>
-            </small>
+            <% if article.user %>
+            Posted by <%= link_to article.user.username, user_path(article.user), id: "posted-by" %>
+            <% end %>
           </div>
         </div>
       </div>
